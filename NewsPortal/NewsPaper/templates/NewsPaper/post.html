@@ -2,9 +2,11 @@
 
 {% block title %}{{ post.head }}{% endblock title %}
 
+{% load custom_filters %}
+
 {% block content %}
 <h2>{{ post.head }} {{ post.datetime|date:'d m y' }}</h2>
 <hr>
-<h3>{{ post.text }}</h3>
+<h3>{{ post.text|censor }}</h3>
 {% endblock content %}
 
