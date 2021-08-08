@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'NewsPaper/default.html' %}
 
-</body>
-</html>
+{% block title %}{{ post.head }}{% endblock title %}
+
+{% block content %}
+<h2>{{ post.head }} {{ post.datetime|date:'d m y' }}</h2>
+<hr>
+<h3>{{ post.text }}</h3>
+{% endblock content %}
+

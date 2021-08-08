@@ -2,33 +2,36 @@
 
 {% block title %}Новости{% endblock title %}
 
+{% load custom_filters %}
+
 {% block content %}
-{% for n in news %}
+<h2>Количество новостей: {{ news|length }}</h2>
 <table>
     <tr>
         <td>
-            {{ n.author.user.username }}
+            Заголовок
         </td>
         <td>
-            {{ n.type }}
+            Дата публикации
         </td>
         <td>
-            {{ n.datetime }}
-        </td>
-        <td>
-            {{ n.category.name }}
-        </td>
-        <td>
-            {{ n.head }}
-        </td>
-        <td>
-            {{ n.text }}
-        </td>
-        <td>
-            {{ n.rating }}
+            Текст
         </td>
     </tr>
+    {% for n in news %}
+    <tr>
+        <td>
+            {{ n.head|censor }}
+        </td>
+        <td>
+            {{ n.datetime|date:'d-m-y h:m'|censor }}
+        </td>
+        <td>
+            {{ n.text|truncatechars:50|censor }}
+        </td>
+    </tr>
+    {% endfor %}
 </table>
-{% endfor %}
+
 {% endblock content %}
 

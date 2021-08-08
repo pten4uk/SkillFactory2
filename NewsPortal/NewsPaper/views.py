@@ -6,6 +6,7 @@ class NewsList(ListView):
     model = Post
     template_name = 'NewsPaper/news.html'
     context_object_name = 'news'
+    queryset = Post.objects.order_by('-datetime')
 
 
 class NewsDetail(DetailView):
