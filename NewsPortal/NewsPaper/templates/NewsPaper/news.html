@@ -1,0 +1,34 @@
+{% extends 'NewsPaper/default.html' %}
+
+{% block title %}Новости{% endblock title %}
+
+{% block content %}
+{% for n in news %}
+<table>
+    <tr>
+        <td>
+            {{ n.author.user.username }}
+        </td>
+        <td>
+            {{ n.type }}
+        </td>
+        <td>
+            {{ n.datetime }}
+        </td>
+        <td>
+            {{ n.category.name }}
+        </td>
+        <td>
+            {{ n.head }}
+        </td>
+        <td>
+            {{ n.text }}
+        </td>
+        <td>
+            {{ n.rating }}
+        </td>
+    </tr>
+</table>
+{% endfor %}
+{% endblock content %}
+

@@ -32,7 +32,7 @@ class Post(models.Model):
         (news, 'Новость')
     ]
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    _class = models.CharField(max_length=1, choices=CLASSES)
+    type = models.CharField(max_length=1, choices=CLASSES)
     datetime = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField(Category, through='PostCategory')
     head = models.CharField(max_length=256)
