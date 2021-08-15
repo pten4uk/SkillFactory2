@@ -4,8 +4,8 @@ from django.db.models import Sum
 
 
 class Author(models.Model):
-    polzovatel = models.OneToOneField(User, on_delete=models.CASCADE)
-    rating = models.IntegerField(default=0)
+    polzovatel = models.OneToOneField(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    rating = models.IntegerField('Рейтинг', default=0)
 
     def update_rating(self):
         postRat = self.post_set.aggregate(postRating=Sum('rating'))
@@ -19,9 +19,12 @@ class Author(models.Model):
         self.rating = pRat*3 + cRat
         self.save()
 
+    def __str__(self):
+        return f'{self.polzovatel.username}'
+
 
 class Category(models.Model):
-    name = models.CharField(max_length=32, unique=True)
+    name = models.CharField('Название', max_length=32, unique=True)
 
 
 class Post(models.Model):
@@ -31,13 +34,13 @@ class Post(models.Model):
         (article, 'Статья'),
         (news, 'Новость')
     ]
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    type = models.CharField(max_length=1, choices=CLASSES)
-    datetime = models.DateTimeField(auto_now_add=True)
-    category = models.ManyToManyField(Category, through='PostCategory')
-    head = models.CharField(max_length=256)
-    text = models.TextField()
-    rating = models.SmallIntegerField(default=0)
+    author = models.ForeignKey(Author, verbose_name='Автор', on_delete=models.CASCADE)
+    type = models.CharField('Тип', max_length=1, choices=CLASSES)
+    datetime = models.DateTimeField('Дата', auto_now_add=True)
+    category = models.ManyToManyField(Category, verbose_name='Категория', through='PostCategory')
+    head = models.CharField('Заголовок', max_length=256)
+    text = models.TextField('Текст')
+    rating = models.SmallIntegerField('Рейтинг', default=0)
 
     def like(self):
         self.rating += 1
@@ -57,11 +60,11 @@ class PostCategory(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField()
-    datetime = models.DateTimeField(auto_now_add=True)
-    rating = models.SmallIntegerField(default=0)
+    post = models.ForeignKey(Post, verbose_name='Пост', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    text = models.TextField('Текст')
+    datetime = models.DateTimeField('Дата', auto_now_add=True)
+    rating = models.SmallIntegerField('Рейтинг', default=0)
 
     def like(self):
         self.rating += 1
