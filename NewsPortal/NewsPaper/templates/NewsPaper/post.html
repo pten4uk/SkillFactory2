@@ -5,8 +5,13 @@
 {% load custom_filters %}
 
 {% block content %}
-<h2>{{ post.head }} {{ post.datetime|date:'d m y' }}</h2>
-<hr>
-<h3>{{ post.text|censor }}</h3>
+<h2>{{ post.head }}
+    <a href="{% url 'update' post.id %}">Редактировать</a>
+    <a href="{% url 'delete' post.id %}">Удалить</a>
+</h2>
+<br>
+{{ post.text|censor }}
+<br>
+<a href="{% url 'home' %}">На главную</a>
 {% endblock content %}
 

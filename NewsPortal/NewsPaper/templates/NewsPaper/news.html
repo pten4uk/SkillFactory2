@@ -5,11 +5,12 @@
 {% load custom_filters %}
 
 {% block content %}
-<h2>Количество новостей: {{ news|length }}</h2>
+<h2>Количество новостей: {{ filter.qs|length }}</h2>
 <form method="GET">
     {{ filter.form }}
     <input type="submit" value="Найти">
 </form>
+<br>
 <table>
     <tr>
         <td>
@@ -25,7 +26,7 @@
     {% for n in news %}
     <tr>
         <td>
-            {{ n.head|censor }}
+            <a href="{{ n.id }}">{{ n.head|censor }}</a>
         </td>
         <td>
             {{ n.datetime|date:'d-m-y h:m'|censor }}
@@ -36,26 +37,10 @@
     </tr>
     {% endfor %}
 </table>
-{% if is_paginated %}
+<br>
+<h3><a href="{% url 'create' %}">Добавить пост</a></h3>
 
-    {% if page_obj.has_previous %}
-    <a href="?page=1">На первую</a>
-    <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
-    {% endif %}
+{% include 'NewsPaper/pagination.html' %}
 
-    {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-            {{ num }}
-        {% elif page_obj.number|add:'-3' < num < page_obj.number|add:'3' %}
-            <a href="?page={{ num }}">{{ num }}</a>
-        {% endif %}
-    {% endfor %}
-
-    {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
-    <a href="?page={{ page_obj.paginator.num_pages }}">К последней</a>
-    {% endif %}
-
-{% endif %}
 {% endblock content %}
 

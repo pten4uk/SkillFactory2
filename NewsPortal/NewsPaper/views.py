@@ -1,5 +1,6 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from .forms import PostForm
 from .models import Post
 from .filters import PostFilter
 
@@ -28,3 +29,23 @@ class NewsDetail(DetailView):
     model = Post
     template_name = 'NewsPaper/post.html'
     context_object_name = 'post'
+
+
+class NewsCreate(CreateView):
+    template_name = 'NewsPaper/create.html'
+    form_class = PostForm
+
+
+class NewsUpdate(UpdateView):
+    template_name = 'NewsPaper/create.html'
+    form_class = PostForm
+
+    def get_object(self, **kwargs):
+        id = self.kwargs.get('pk')
+        return Post.objects.get(pk=id)
+
+
+class NewsDelete(DeleteView):
+    template_name = 'NewsPaper/delete.html'
+    queryset = Post.objects.all()
+    success_url = '/news/'

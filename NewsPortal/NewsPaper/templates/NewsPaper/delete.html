@@ -1,0 +1,16 @@
+{% extends 'NewsPaper/default.html' %}
+
+{% block title %}Удаление товара{% endblock title %}
+
+
+{% block content %}
+<h2>Вы действительно хотите удалить данный пост?</h2>
+<h3>{{ post.head }}</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Подтвердить">
+    <a href="{% url 'detail' post.id %}">Отмена</a>
+</form>
+
+{% endblock content %}
+
