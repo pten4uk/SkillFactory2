@@ -8,6 +8,22 @@
     <title>{% block title %}Главная{% endblock title %}</title>
 </head>
 <body>
+
+<h1>
+{% if user.is_authenticated %}
+{% load account %}
+{% user_display user %} |<a href="/accounts/logout">Выйти</a>
+{% else %}
+<a href="/accounts/login/">Войти</a>
+{% endif %}
+    <a href="{% url 'home' %}">Новости</a>
+    {% if is_not_author %}
+    <a href="{% url 'create' %}">Стать автором</a>
+    {% else %}
+    <a href="{% url 'create' %}">Добавить пост</a>
+    {% endif %}
+</h1>
+<br>
 {% block content %}
 {% endblock content %}
 </body>

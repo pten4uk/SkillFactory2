@@ -22,6 +22,9 @@
         <td>
             Текст
         </td>
+        <td>
+            Автор
+        </td>
     </tr>
     {% for n in news %}
     <tr>
@@ -34,11 +37,13 @@
         <td>
             {{ n.text|truncatechars:50|censor }}
         </td>
+        <td>
+            {{ n.author.polzovatel.username|censor }}
+        </td>
     </tr>
     {% endfor %}
 </table>
 <br>
-<h3><a href="{% url 'create' %}">Добавить пост</a></h3>
 
 {% include 'NewsPaper/pagination.html' %}
 
