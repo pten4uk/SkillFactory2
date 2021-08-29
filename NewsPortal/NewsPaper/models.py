@@ -26,6 +26,9 @@ class Author(models.Model):
 class Category(models.Model):
     name = models.CharField('Название', max_length=32, unique=True)
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Post(models.Model):
     article = 'A'

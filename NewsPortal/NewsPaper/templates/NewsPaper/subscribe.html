@@ -1,0 +1,10 @@
+{% extends 'NewsPaper/default.html' %}
+
+{% block content %}
+<h2>Выберите категорию, по которой хотите получать рассылку:</h2>
+{% for category in categories %}
+<p><button><a href="{{ category.id }}">{{ category.name }}</a></button></p>
+{% endfor %}
+<p><button><a href="{% url 'unsubscribe' %}">Отписаться от всех рассылок</a></button></p>
+
+{% endblock content %}

@@ -32,7 +32,7 @@
             <a href="{{ n.id }}">{{ n.head|censor }}</a>
         </td>
         <td>
-            {{ n.datetime|date:'d-m-y h:m'|censor }}
+            {{ n.datetime|date:'d-m-y H:i'|censor }}
         </td>
         <td>
             {{ n.text|truncatechars:50|censor }}
