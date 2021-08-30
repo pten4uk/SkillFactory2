@@ -149,14 +149,14 @@ LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/news'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/news'
 
-DEFAULT_FROM_EMAIL = 'pten4ik99@yandex.ru'
+
 
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+DEFAULT_FROM_EMAIL = 'pten4ik99@yandex.ru'
 
 ACCOUNT_FORMS = {'signup': 'NewsPaper.forms.UserSignupForm'}
 
