@@ -1,10 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db.models import Sum
 
 
+class CustomUser(AbstractUser):
+    subscribe_category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
+
+
 class Author(models.Model):
-    polzovatel = models.OneToOneField(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    polzovatel = models.OneToOneField(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
     rating = models.IntegerField('Рейтинг', default=0)
 
     def update_rating(self):
@@ -67,7 +71,7 @@ class PostCategory(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, verbose_name='Пост', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
     text = models.TextField('Текст')
     datetime = models.DateTimeField('Дата', auto_now_add=True)
     rating = models.SmallIntegerField('Рейтинг', default=0)
