@@ -23,7 +23,7 @@ def mail_sender():
         for cat, emails in info.items():
 
             html = render_to_string(
-                'NewsPaper/sender_mail.html',
+                'newspaper/sender_mail.html',
                 {
                     'post_list': post_list,
                 }

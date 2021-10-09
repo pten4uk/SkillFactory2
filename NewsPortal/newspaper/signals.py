@@ -6,7 +6,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from NewsPaper.views import Post
+from newspaper.views import Post
 from django.template.loader import render_to_string
 
 
@@ -26,7 +26,7 @@ def created_handler(sender, instance, **kwargs):
 
             post_id = instance.pk
             html = render_to_string(
-                'NewsPaper/message.html',
+                'newspaper/message.html',
                 {'post_id': post_id},
             )
 

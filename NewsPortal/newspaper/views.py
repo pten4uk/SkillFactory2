@@ -14,7 +14,7 @@ from .filters import PostFilter
 
 class NewsList(ListView):
     model = Post
-    template_name = 'NewsPaper/news.html'
+    template_name = 'newspaper/news.html'
     context_object_name = 'news'
     queryset = Post.objects.order_by('-datetime')
     paginate_by = 10
@@ -46,12 +46,12 @@ class NewsList(ListView):
 
 class NewsDetail(DetailView):
     model = Post
-    template_name = 'NewsPaper/post.html'
+    template_name = 'newspaper/post.html'
     context_object_name = 'post'
 
 
 class NewsCreate(LoginRequiredMixin, CreateView):
-    template_name = 'NewsPaper/create.html'
+    template_name = 'newspaper/create.html'
     form_class = PostForm
 
     def post(self, request, *args, **kwargs):
@@ -75,7 +75,7 @@ class NewsCreate(LoginRequiredMixin, CreateView):
 
 
 class NewsUpdate(LoginRequiredMixin, UpdateView):
-    template_name = 'NewsPaper/create.html'
+    template_name = 'newspaper/create.html'
     form_class = PostForm
 
     def get_object(self, **kwargs):
@@ -84,7 +84,7 @@ class NewsUpdate(LoginRequiredMixin, UpdateView):
 
 
 class NewsDelete(LoginRequiredMixin, DeleteView):
-    template_name = 'NewsPaper/delete.html'
+    template_name = 'newspaper/delete.html'
     queryset = Post.objects.all()
     success_url = '/news/'
 
@@ -92,7 +92,7 @@ class NewsDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def subscribe(r):
     categories = Category.objects.all()
-    return render(r, 'NewsPaper/subscribe.html', {'categories': categories})
+    return render(r, 'newspaper/subscribe.html', {'categories': categories})
 
 
 @login_required

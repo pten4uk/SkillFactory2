@@ -1,4 +1,4 @@
-from NewsPaper.models import *
+from newspaper.models import *
 user1 = User.objects.create(username='pten4uk', first_name='Nikita')
 user2 = User.objects.create(username='den4uk', first_name='Denis')
 Author.objects.create(polzovatel=user1)
