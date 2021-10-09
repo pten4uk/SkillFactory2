@@ -6,14 +6,12 @@ from .models import Post
 
 
 class PostForm(ModelForm):
-
     class Meta:
         model = Post
         fields = ['category', 'head', 'text']
 
 
 class UserSignupForm(SignupForm):
-
     def save(self, request):
         user = super().save(request)
         group = Group.objects.get(name='common')

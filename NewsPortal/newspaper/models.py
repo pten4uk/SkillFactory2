@@ -5,7 +5,14 @@ from django.db.models import Sum
 
 
 class CustomUser(AbstractUser):
-    subscribe_category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
+    subscribe_category = models.ForeignKey(
+        'Category',
+        verbose_name='Подписан на категорию',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='users',
+    )
 
 
 User = get_user_model()

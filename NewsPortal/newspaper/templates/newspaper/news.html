@@ -1,4 +1,4 @@
-{% extends 'NewsPaper/default.html' %}
+{% extends 'newspaper/default.html' %}
 
 {% block title %}Новости{% endblock title %}
 
@@ -28,24 +28,26 @@
     </tr>
     {% for n in news %}
     <tr>
+        {% filter censor %}
         <td>
-            <a href="{{ n.id }}">{{ n.head|censor }}</a>
+            <a href="{{ n.id }}">{{ n.head }}</a>
         </td>
         <td>
-            {{ n.datetime|date:'d-m-y H:i'|censor }}
+            {{ n.datetime|date:'d-m-y H:i' }}
         </td>
         <td>
-            {{ n.text|truncatechars:50|censor }}
+            {{ n.text|truncatechars:50 }}
         </td>
         <td>
-            {{ n.author.polzovatel.username|censor }}
+            {{ n.author.user.username }}
         </td>
+        {% endfilter %}
     </tr>
     {% endfor %}
 </table>
 <br>
 
-{% include 'NewsPaper/pagination.html' %}
+{% include 'paginator.html' %}
 
 {% endblock content %}
 

@@ -9,6 +9,6 @@ urlpatterns = [
     path('<int:pk>/delete', NewsDelete.as_view(), name='delete'),
 
     path('subscribe/', subscribe, name='subscribe'),
-    path('subscribe/<int:pk>', choice_sub),
+    path('subscribe/<int:pk>', choice_category_for_subscribe),
     path('unsubscribe/', unsubscribe, name='unsubscribe'),
 ]

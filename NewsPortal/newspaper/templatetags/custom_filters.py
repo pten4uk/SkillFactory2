@@ -2,7 +2,8 @@ from django import template
 
 register = template.Library()
 
-CENSORED = ['хороший', 'требует']
+CENSORED = ['мат', 'материшинник']
+
 
 @register.filter(name='censor')
 def censor(value):

@@ -1,6 +1,5 @@
 import json
 import os
-from datetime import timedelta, datetime
 
 from django.core.mail import EmailMultiAlternatives
 from django.db.models.signals import post_save
@@ -11,30 +10,27 @@ from django.template.loader import render_to_string
 
 
 @receiver(post_save, sender=Post)
-def created_handler(sender, instance, **kwargs):
-    instance_category = instance.category.all()
+def created_handler(sender, instance, created, **kwargs):
+    instance_category = instance.category.first()
 
-    for cat in instance_category:
-        if os.path.exists('subscribers.json'):
-            with open('subscribers.json', 'r', encoding='utf8') as f:
-                categories_in_db = json.load(f)
-            emails = []
-            for category in categories_in_db:
-                if category == cat.name:
-                    emails = categories_in_db[category]
-                    break
+    if instance_category and not created:
+        post_id = instance.pk
+        emails_in_dict = instance_category.users.all().values('email')
+        emails = []
 
-            post_id = instance.pk
-            html = render_to_string(
-                'newspaper/message.html',
-                {'post_id': post_id},
+        for user_email in emails_in_dict:
+            emails.append(user_email['email'])
+
+        html = render_to_string(
+            'newspaper/send_messages/message.html',
+            {'post_id': post_id},
+        )
+
+        msg = EmailMultiAlternatives(
+                subject=f'Добавлен новый товар по категории "{instance_category}"',
+                from_email='pten4ik99@yandex.ru',
+                to=emails
             )
 
-            msg = EmailMultiAlternatives(
-                    subject=f'Добавлен новый товар по категории "{cat.name}"',
-                    from_email='pten4ik99@yandex.ru',
-                    to=emails
-                )
-
-            msg.attach_alternative(html, 'text/html')
-            msg.send()
+        msg.attach_alternative(html, 'text/html')
+        msg.send()
