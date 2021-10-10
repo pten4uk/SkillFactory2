@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django_filters',
     'django_apscheduler',
     'django_celery_beat',
+    'debug_toolbar',
 
     'newspaper.apps.NewspaperConfig',
 ]
@@ -62,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -224,3 +227,7 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

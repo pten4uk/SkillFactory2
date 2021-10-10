@@ -14,6 +14,6 @@ class PostForm(ModelForm):
 class UserSignupForm(SignupForm):
     def save(self, request):
         user = super().save(request)
-        group = Group.objects.get(name='common')
+        group, created = Group.objects.get_or_create(name='common')
         group.user_set.add(user)
         return user

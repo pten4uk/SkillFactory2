@@ -43,7 +43,7 @@ class NewsCreate(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.author = Author.objects.get_or_create(user=self.request.user)[0]
         if not self.object.author.user.groups.filter(name='authors').exists():
-            group = Group.objects.get(name='authors')
+            group, created = Group.objects.get_or_create(name='authors')
             group.user_set.add(self.request.user)
         self.object.save()
 
