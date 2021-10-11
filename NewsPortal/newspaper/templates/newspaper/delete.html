@@ -1,15 +1,15 @@
 {% extends 'newspaper/default.html' %}
-
-{% block title %}Удаление товара{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans 'Удаление товара' %}{% endblock title %}
 
 
 {% block content %}
-<h2>Вы действительно хотите удалить данный пост?</h2>
+<h2>{% trans 'Вы действительно хотите удалить данный пост' %}?</h2>
 <h3>{{ post.head }}</h3>
 <form method="post">
     {% csrf_token %}
-    <input type="submit" value="Подтвердить">
-    <a href="{% url 'detail' post.id %}">Отмена</a>
+    <input type="submit" value="{% trans 'Подтвердить' %}">
+    <a href="{% url 'detail' post.id %}">{% trans 'Отмена' %}</a>
 </form>
 
 {% endblock content %}

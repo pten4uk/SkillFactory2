@@ -1,8 +1,8 @@
 {% if is_paginated %}
-
+{% load i18n %}
     {% if page_obj.has_previous %}
-    <a href="?page=1">Первая</a>
-    <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+    <a href="?page=1">{% trans 'Первая' %}</a>
+    <a href="?page={{ page_obj.previous_page_number }}">{% trans 'Предыдущая' %}</a>
     {% endif %}
 
     {% for num in page_obj.paginator.page_range %}
@@ -14,7 +14,7 @@
     {% endfor %}
 
     {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
-    <a href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
+    <a href="?page={{ page_obj.next_page_number }}">{% trans 'Следующая' %}</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">{% trans 'Последняя' %}</a>
     {% endif %}
 {% endif %}

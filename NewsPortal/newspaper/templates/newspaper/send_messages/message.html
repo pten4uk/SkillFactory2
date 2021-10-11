@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
 </head>
 <body>
-<h3>По выбранной категории был добавлен новый товар!</h3>
-<p>Подробнее по ссылке: <a href="http://127.0.0.1:8000/news/{{ post_id }}">http://127.0.0.1:8000/news/{{ post_id }}</a></p>
+<h3>{% trans 'По выбранной категории был добавлен новый товар' %}!</h3>
+<p>{% trans 'Подробнее по ссылке' %}: <a href="http://127.0.0.1:8000/news/{{ post_id }}">http://127.0.0.1:8000/news/{{ post_id }}</a></p>
 </body>
 </html>

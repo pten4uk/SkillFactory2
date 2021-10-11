@@ -1,5 +1,5 @@
 {% extends 'NewsPaper/default.html' %}
-
+{% load i18n %}
 {% block title %}{{ post.head }}{% endblock title %}
 
 {% load custom_filters %}
@@ -7,8 +7,8 @@
 {% block content %}
 <h2>{{ post.head }}
     {% if user.is_authenticated %}
-    <a href="{% url 'update' post.id %}">Редактировать</a>
-    <a href="{% url 'delete' post.id %}">Удалить</a>
+    <a href="{% url 'update' post.id %}">{% trans 'Редактировать' %}</a>
+    <a href="{% url 'delete' post.id %}">{% trans 'Удалить' %}</a>
     {% endif %}
 </h2>
 <br>

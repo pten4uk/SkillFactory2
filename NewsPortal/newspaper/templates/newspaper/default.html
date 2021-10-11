@@ -1,29 +1,30 @@
 <!doctype html>
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}Главная{% endblock title %}</title>
+    <title>{% block title %}{% trans 'Главная' %}{% endblock title %}</title>
 </head>
 <body>
 
 <h1>
 {% if user.is_authenticated %}
 {% load account %}
-{% user_display user %} |<a href="/accounts/logout">Выйти</a>
+{% user_display user %} |<a href="/accounts/logout">{% trans 'Выйти' %}</a>
 {% else %}
-<a href="/accounts/login/">Войти</a>
+<a href="/accounts/login/">{% trans 'Войти' %}</a>
 {% endif %}
-    <a href="{% url 'home' %}">Новости</a>
+    <a href="{% url 'home' %}">{% trans 'Новости' %}</a>
     {% if is_not_author %}
-    <a href="{% url 'create' %}">Стать автором</a>
+    <a href="{% url 'create' %}">{% trans 'Стать автором' %}</a>
     {% else %}
-    <a href="{% url 'create' %}">Добавить пост</a>
+    <a href="{% url 'create' %}">{% trans 'Добавить пост' %}</a>
     {% endif %}
     {% if user.is_authenticated %}
-    <a href="{% url 'subscribe' %}">Управление рассылкой</a>
+    <a href="{% url 'subscribe' %}">{% trans 'Управление рассылкой' %}</a>
     {% endif %}
 </h1>
 <br>

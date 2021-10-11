@@ -1,29 +1,29 @@
 {% extends 'newspaper/default.html' %}
-
-{% block title %}Новости{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans 'Новости' %}{% endblock title %}
 
 {% load custom_filters %}
 
 {% block content %}
-<h2>Количество новостей: {{ filter.qs|length }}</h2>
+<h2>{% trans 'Количество новостей' %}: {{ filter.qs|length }}</h2>
 <form method="GET">
     {{ filter.form }}
-    <input type="submit" value="Найти">
+    <input type="submit" value="{% trans 'Найти' %}">
 </form>
 <br>
 <table>
     <tr>
         <td>
-            Заголовок
+            {% trans 'Заголовок' %}
         </td>
         <td>
-            Дата публикации
+            {% trans 'Дата публикации' %}
         </td>
         <td>
-            Текст
+            {% trans 'Текст' %}
         </td>
         <td>
-            Автор
+            {% trans 'Автор' %}
         </td>
     </tr>
     {% for n in news %}

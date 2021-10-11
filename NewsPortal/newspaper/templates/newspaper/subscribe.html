@@ -1,10 +1,10 @@
 {% extends 'newspaper/default.html' %}
-
+{% load i18n %}
 {% block content %}
-<h2>Выберите категорию, по которой хотите получать рассылку:</h2>
+<h2>{% trans 'Выберите категорию, по которой хотите получать рассылку' %}:</h2>
 {% for category in categories %}
 <p><button><a href="{{ category.id }}">{{ category.name }}</a></button></p>
 {% endfor %}
-<p><button><a href="{% url 'unsubscribe' %}">Отписаться от всех рассылок</a></button></p>
+<p><button><a href="{% url 'unsubscribe' %}">{% trans 'Отписаться от всех рассылок' %}</a></button></p>
 
 {% endblock content %}
