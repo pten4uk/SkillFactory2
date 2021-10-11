@@ -1,7 +1,10 @@
+import pytz
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group
+from django.utils import timezone
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import PostForm
@@ -24,9 +27,19 @@ class NewsList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['current_time'] = timezone.now()
+        context['timezones'] = pytz.common_timezones
         context['filter'] = self.get_filter()
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
         return context
+
+    def post(self, request, *args, **kwargs):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('home')
+
+# class NewsList(View):
+#     def get(self, request, *args, **kwargs):
+
 
 
 class NewsDetail(DetailView):
