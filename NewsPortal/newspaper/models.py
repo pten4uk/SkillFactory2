@@ -23,13 +23,19 @@ class Author(models.Model):
     rating = models.IntegerField('Рейтинг', default=0)
 
     def update_rating(self):
-        postRat = self.post_set.aggregate(postRating=Sum('rating'))
-        pRat = 0
-        pRat += postRat.get('postRating')
+        postRat = self.post_set.all() or 0
+        if postRat:
+            postRat = postRat.aggregate(rating=Sum('rating'))
 
-        commentRat = self.user.comment_set.aggregate(commentRating=Sum('rating'))
+        pRat = 0
+        pRat += postRat.get('rating') if postRat else 0
+
+        commentRat = self.user.comment_set.all() or 0
+        if commentRat:
+            commentRat = commentRat.aggregate(rating=Sum('rating'))
+
         cRat = 0
-        cRat += commentRat.get('commentRating')
+        cRat += commentRat.get('rating') if commentRat else 0
 
         self.rating = pRat*3 + cRat
         self.save()

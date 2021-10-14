@@ -8,6 +8,9 @@ from .models import *
 
 User = get_user_model()
 
+admin.site.register(Author)
+admin.site.register(Comment)
+
 
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin):
