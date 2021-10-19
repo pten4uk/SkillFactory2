@@ -17,7 +17,7 @@ class NewsList(ListView):
     template_name = 'newspaper/news.html'
     context_object_name = 'news'
     queryset = Post.objects.order_by('-datetime')
-    paginate_by = 10
+    paginate_by = 2
 
     def get_filter(self):
         return PostFilter(self.request.GET, queryset=super().get_queryset())
