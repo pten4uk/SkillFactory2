@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-20 19:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\newspaper\templates\newspaper\create.html:3
+#: .\newspaper\templates\newspaper\default.html:24
+#: .\newspaper\templates\newspaper\news.html:6
+msgid "Новости"
+msgstr "News"
+
+#: .\newspaper\templates\newspaper\create.html:6
+msgid "Добавление/Редактирование поста"
+msgstr "Add/Edit Post"
+
+#: .\newspaper\templates\newspaper\create.html:10
+msgid "Добавить"
+msgstr "Add"
+
+#: .\newspaper\templates\newspaper\default.html:10
+msgid "Главная"
+msgstr "Main"
+
+#: .\newspaper\templates\newspaper\default.html:20
+msgid "Выйти"
+msgstr "Sign out"
+
+#: .\newspaper\templates\newspaper\default.html:22
+msgid "Войти"
+msgstr "Sign In"
+
+#: .\newspaper\templates\newspaper\default.html:26
+msgid "Стать автором"
+msgstr "Become Author"
+
+#: .\newspaper\templates\newspaper\default.html:28
+msgid "Добавить пост"
+msgstr "Add Post"
+
+#: .\newspaper\templates\newspaper\default.html:31
+msgid "Управление рассылкой"
+msgstr "Email Management"
+
+#: .\newspaper\templates\newspaper\delete.html:3
+msgid "Удаление товара"
+msgstr "Delete Product"
+
+#: .\newspaper\templates\newspaper\delete.html:7
+msgid "Вы действительно хотите удалить данный пост"
+msgstr "Are you sure to delete this post?"
+
+#: .\newspaper\templates\newspaper\delete.html:11
+msgid "Подтвердить"
+msgstr "Comfirm"
+
+#: .\newspaper\templates\newspaper\delete.html:12
+msgid "Отмена"
+msgstr "Cancel"
+
+#: .\newspaper\templates\newspaper\news.html:12
+msgid "Временная зона"
+msgstr "Time zone"
+
+#: .\newspaper\templates\newspaper\news.html:22
+msgid "Количество новостей"
+msgstr "Quantity of news"
+
+#: .\newspaper\templates\newspaper\news.html:25
+msgid "Найти"
+msgstr "Find"
+
+#: .\newspaper\templates\newspaper\news.html:31
+msgid "Заголовок"
+msgstr "Title"
+
+#: .\newspaper\templates\newspaper\news.html:34
+msgid "Дата публикации"
+msgstr "Publication Date"
+
+#: .\newspaper\templates\newspaper\news.html:37
+msgid "Текст"
+msgstr "Text"
+
+#: .\newspaper\templates\newspaper\news.html:40
+msgid "Автор"
+msgstr "Author"
+
+#: .\newspaper\templates\newspaper\post.html:10
+msgid "Редактировать"
+msgstr "Edit"
+
+#: .\newspaper\templates\newspaper\post.html:11
+msgid "Удалить"
+msgstr "Delete"
+
+#: .\newspaper\templates\newspaper\send_messages\message.html:8
+msgid "По выбранной категории был добавлен новый товар"
+msgstr ""
+
+#: .\newspaper\templates\newspaper\send_messages\message.html:9
+msgid "Подробнее по ссылке"
+msgstr ""
+
+#: .\newspaper\templates\newspaper\send_messages\sender_mail.html:8
+msgid "Новые посты за прошедшую неделю"
+msgstr ""
+
+#: .\newspaper\templates\newspaper\subscribe.html:4
+msgid "Выберите категорию, по которой хотите получать рассылку"
+msgstr ""
+
+#: .\newspaper\templates\newspaper\subscribe.html:8
+msgid "Отписаться от всех рассылок"
+msgstr ""
+
+#: .\templates\paginator.html:4
+msgid "Первая"
+msgstr ""
+
+#: .\templates\paginator.html:5
+msgid "Предыдущая"
+msgstr ""
+
+#: .\templates\paginator.html:17
+msgid "Следующая"
+msgstr ""
+
+#: .\templates\paginator.html:18
+msgid "Последняя"
+msgstr ""

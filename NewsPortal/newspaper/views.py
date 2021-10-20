@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group
 from django.utils import timezone
-from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import PostForm
@@ -36,10 +35,6 @@ class NewsList(ListView):
     def post(self, request, *args, **kwargs):
         request.session['django_timezone'] = request.POST['timezone']
         return redirect('home')
-
-# class NewsList(View):
-#     def get(self, request, *args, **kwargs):
-
 
 
 class NewsDetail(DetailView):
