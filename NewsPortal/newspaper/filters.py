@@ -5,12 +5,12 @@ from .models import Post
 
 
 class PostFilter(django_filters.FilterSet):
-    datetime = django_filters.DateTimeFilter(widget=(forms.TextInput(attrs={'type': 'date'})))
+    date = django_filters.DateTimeFilter(widget=(forms.TextInput(attrs={'type': 'date'})))
 
     class Meta:
         model = Post
         fields = {
-            'datetime': ['exact'],
+            'date': ['exact'],
             'head': ['icontains'],
             'author': ['exact'],
         }

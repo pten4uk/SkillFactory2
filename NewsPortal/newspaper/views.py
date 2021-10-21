@@ -1,5 +1,6 @@
 import pytz
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group
@@ -15,14 +16,28 @@ class NewsList(ListView):
     model = Post
     template_name = 'newspaper/news.html'
     context_object_name = 'news'
-    queryset = Post.objects.order_by('-datetime')
+    queryset = Post.objects.order_by('-date')
     paginate_by = 2
 
     def get_filter(self):
         return PostFilter(self.request.GET, queryset=super().get_queryset())
 
     def get_queryset(self):
-        return self.get_filter().qs
+        GET = self.request.GET
+
+        if GET:
+            query_dict = {}
+
+            for i, value in self.request.GET.items():
+                if value and not i == 'page':
+                    query_dict[i] = value
+
+            qs = Post.objects.filter(
+                **query_dict
+            )
+            return qs
+
+        return super().get_queryset()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

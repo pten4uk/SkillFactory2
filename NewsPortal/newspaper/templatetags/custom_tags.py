@@ -10,7 +10,7 @@ def get_filter_params(request):
 
     for param in params.keys():
 
-        if params[param]:
+        if params[param] and param != 'page':
             completed_list.append(f'{param}={params[param]}&')
 
     return completed_list
